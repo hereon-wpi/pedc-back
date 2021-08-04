@@ -1,60 +1,39 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-
-class CreateDocumentDTO {
-  title: string;
-  blocks: any;
-}
-
-class UpdateDocumentDTO {
-  id: string;
-  title: string;
-  blocks: any;
-}
+import { CreateDocumentDTO, UpdateDocumentDTO } from "./document.dto";
+import { DocumentService } from "./document.service";
 
 
 @Controller("documents")
 export class DocumentController {
   private items = [];
 
-  constructor() {
+  constructor(
+    private readonly documentService: DocumentService
+  ) {
   }
 
   @Post()
   async create(@Body() dto: CreateDocumentDTO): Promise<any> {
-    const id = String(Date.now());
-
-    this.items.push({ id, ...dto});
-
-    return id;
+    return this.documentService.create(dto);
   }
 
   @Get()
   async findAll(): Promise<any> {
-    return this.items;
+    return this.documentService.findAll();
   }
 
   @Get(":id")
-  async findOne(@Param() params): Promise<any> {
-    return this.items.find((item) => item.id === params.id);
+  async findOne(@Param('id') id: string): Promise<any> {
+    return this.documentService.findOne(id);
   }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() dto: UpdateDocumentDTO) {
-    this.items = this.items.map((item) => {
-      if(item.id === id){
-        return { ...item, ...dto };
-      }
-
-      return item;
-    });
-
-    return this.items;
+    return this.documentService.updateOne(id, dto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    this.items = this.items.filter(item => item.id !== id);
-
-    return this.items;
+    return this.documentService.removeOne(id);
   }
 }
