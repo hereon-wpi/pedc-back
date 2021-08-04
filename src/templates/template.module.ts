@@ -6,9 +6,10 @@ import { TemplateService } from "./template.service";
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: Template.name, schema: TemplateSchema }
-    ])
+    MongooseModule.forFeature([{
+      name: Template.name,
+      schema: TemplateSchema
+    }])
   ],
   controllers: [TemplateController],
   providers: [TemplateService]
