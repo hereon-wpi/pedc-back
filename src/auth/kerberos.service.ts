@@ -15,7 +15,7 @@ export class KerberosService {
             await checkPassword(username, pass, kService, kDefaultRealm);
             return {username, userId: +new Date()};
         } catch (unauthorized){
-            throw new UnauthorizedException(unauthorized.stack);
+            throw new UnauthorizedException(unauthorized.message);
         }
     }
 }
