@@ -18,16 +18,16 @@ export class UserController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdateUserDTO) {
-    if(dto.attachedDocId){
-      return this.userService.updateDocs(id, dto.attachedDocId);
+  @Put('/attach')
+  async update(@Body() dto: UpdateUserDTO) {
+    if(dto.userId && dto.docId){
+      return this.userService.updateDocs(dto.userId, dto.docId);
     }
 
-    if(dto.role){
-      return this.userService.updateRole(id, dto.role)
+    if(dto.userId && dto.role){
+      return this.userService.updateRole(dto.userId, dto.role)
     }
 
-    return this.userService.findOne(id);
+    return this.userService.findOne(dto.userId);
   }
 }

@@ -14,7 +14,9 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', 'pedc-view', 'build'),
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/pedc'),
+    MongooseModule.forRoot('mongodb://localhost:27017/pedc', {
+      useFindAndModify: false,
+    }),
     TemplateModule,
     DocumentModule,
     AuthModule,

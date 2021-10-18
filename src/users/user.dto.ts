@@ -11,7 +11,7 @@ export class CreateUserDTO {
 }
 
 export class UpdateUserDTO {
-  id: string;
-  attachedDocId?: string;
+  userId: string;
+  docId?: string;
   role?: USER_ROLE;
 }

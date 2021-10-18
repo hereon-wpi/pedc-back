@@ -14,7 +14,7 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<UserSchemaType> {
-    return this.userModel.findOne({ _id: id }).exec();
+    return this.userModel.findOne({ _id: id }, { password: 0 }).exec();
   }
 
   async findOneByName(username: string): Promise<UserSchemaType> {
