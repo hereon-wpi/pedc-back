@@ -33,13 +33,13 @@ export class DocumentController {
 
   @UseGuards(JwtAuthGuard)
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateDocumentDTO) {
+  async update(@Param('id') id: string, @Body() dto: UpdateDocumentDTO) {
     return this.documentService.updateOne(id, dto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.documentService.removeOne(id);
   }
 }
