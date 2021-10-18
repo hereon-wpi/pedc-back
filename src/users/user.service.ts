@@ -13,11 +13,11 @@ export class UserService {
   ) {
   }
 
-  async findOne(id: string): Promise<UserSchemaDefinition> {
+  async findOne(id: string): Promise<UserSchemaType> {
     return this.userModel.findOne({ _id: id }).exec();
   }
 
-  async findOneByName(username: string): Promise<UserSchemaDefinition> {
+  async findOneByName(username: string): Promise<UserSchemaType> {
     return this.userModel.findOne({ username }).exec();
   }
 
