@@ -3,7 +3,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { TemplateModule } from "./templates/template.module";
 import { DocumentModule } from "./documents/document.module";
 import { AuthModule } from "./auth/auth.module";
-import { UsersModule } from "./users/users.module";
+import { UserModule } from "./users/user.module";
 import { AppController } from "./app.controller";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from 'path';
@@ -18,7 +18,7 @@ import { join } from 'path';
     TemplateModule,
     DocumentModule,
     AuthModule,
-    UsersModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [],
