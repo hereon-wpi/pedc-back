@@ -1,6 +1,6 @@
 export enum USER_ROLE {
-  USER,
-  SCIENTIST
+  USER = 'USER',
+  SCIENTIST = 'SCIENTIST'
 }
 
 export class CreateUserDTO {

@@ -14,7 +14,8 @@ export class AuthController {
   async login(@Request() req) {
     const payload = {
       username: req.user.username,
-      userId: req.user.userId
+      userId: req.user.userId,
+      role: req.user.role,
     };
 
     return {
